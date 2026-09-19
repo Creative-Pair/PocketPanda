@@ -1,26 +1,20 @@
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
-from typing import Optional
+from uuid import UUID
 
-# Shared base fields
-class UserBase(BaseModel):
-    full_name: str
+class UserCreate(BaseModel):
     email: EmailStr
+    password: str  # plain password from client; hashed before saving
 
-# What the client sends when signing up
-class UserCreate(UserBase):
-    password: str
-
-# What the client sends when logging in
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
 
-# What the API returns (never includes the password)
-class UserOut(UserBase):
-    id: int
-    is_active: bool
-    is_verified: bool
+class UserOut(BaseModel):
+    id: UUID
+    email: EmailStr
+    role: str
+    status: str
     created_at: datetime
 
     class Config:

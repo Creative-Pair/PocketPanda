@@ -14,6 +14,13 @@ sys.path.append(os.getcwd())  # so "app" is importable
 from app.database import Base
 from app.core.config import settings
 from app.models.user import User  # import every model here as you add more
+from app.models.account import Account
+from app.models.category import Category
+from app.models.transaction import Transaction
+from app.models.ledger_entry import LedgerEntry
+from app.models.goal import Goal
+from app.models.goal_contribution import GoalContribution
+from app.models.asset import Asset
 # --- END ADDED ---
 
 # this is the Alembic Config object, which provides
